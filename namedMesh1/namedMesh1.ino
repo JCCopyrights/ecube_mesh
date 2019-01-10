@@ -19,8 +19,19 @@ Task taskSendMessage( TASK_SECOND*30, TASK_FOREVER, []() {
     Serial.println("Task pop up\n");
     String msg = String("This is a message from: ") + nodeName + String(" for 2");
     String to = "2";
-    mesh.sendBroadcast(msg); 
+    mesh.sendBroadcast(msg);     
 }); // start with a one second interval
+
+Task taskSendMessageunitest( TASK_SECOND*5, TASK_FOREVER, []() {
+    Serial.println("Task1 pop up\n");
+    String msg = String("Surprise MOTHERFUCKER");
+    uint32_t to = 3808757381;
+    mesh.sendSingle(to, msg); 
+     //mesh.sendBroadcast(msg); 
+}); // start with a one second interval
+
+
+
 
 void setup() {
   Serial.begin(115200);
@@ -31,6 +42,8 @@ void setup() {
 
   mesh.setName(nodeName); // This needs to be an unique name! 
 
+
+  //WARNING TWO CALLBACKS FOR THE SAME EVENT JUST FOR TESTING
   mesh.onReceive([](uint32_t from, String &msg) {
     Serial.printf("Received message by id from: %u, %s\n", from, msg.c_str());
   });
@@ -41,10 +54,15 @@ void setup() {
 
   mesh.onChangedConnections([]() {
     Serial.printf("Changed connection\n");
+    Serial.println(mesh.subConnectionJson());
   });
-
+  //Force this node as Root of the MESH
+  mesh.setRoot();
+  mesh.setContainsRoot();//Informs the node that a root should exist
+  userScheduler.addTask(taskSendMessageunitest);
   userScheduler.addTask(taskSendMessage);
   taskSendMessage.enable();
+  taskSendMessageunitest.enable();
 }
 
 void loop() {

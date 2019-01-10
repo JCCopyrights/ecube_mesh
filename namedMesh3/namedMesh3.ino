@@ -43,7 +43,7 @@ void setup() {
   mesh.onChangedConnections([]() {
     Serial.printf("Changed connection\n");
   });
-
+  mesh.setContainsRoot();//Informs the node that a root should exist
   userScheduler.addTask(taskSendMessage);
   taskSendMessage.enable();
 }
