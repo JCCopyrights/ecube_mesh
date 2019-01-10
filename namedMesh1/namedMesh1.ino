@@ -20,7 +20,7 @@ Task taskSendMessage( TASK_SECOND*30, TASK_FOREVER, []() {
     String msg = String("This is a message from: ") + nodeName + String(" for 2");
     String to = "2";
     mesh.sendBroadcast(msg); 
-}); // start with a one second intervall
+}); // start with a one second interval
 
 void setup() {
   Serial.begin(115200);
