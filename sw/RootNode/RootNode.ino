@@ -7,10 +7,10 @@
 #define   MESH_PREFIX     "whateverYouLike"
 #define   MESH_PASSWORD   "somethingSneaky"
 #define   MESH_PORT       5555
-#define   CHANNEL         3
+#define   CHANNEL         6
 
-#define   STATION_SSID     "XXXX"
-#define   STATION_PASSWORD "XXXXXXXX"
+#define   STATION_SSID     "MOVISTAR_5CF0"
+#define   STATION_PASSWORD "F12E5A9A3C16818DD49C"
 
 #define HOSTNAME "HTTP_BRIDGE"
 String nodeName;
