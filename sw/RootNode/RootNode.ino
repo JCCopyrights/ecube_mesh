@@ -9,8 +9,8 @@
 #define   MESH_PORT       5555
 #define   CHANNEL         6
 
-#define   STATION_SSID     "MOVISTAR_5CF0"
-#define   STATION_PASSWORD "F12E5A9A3C16818DD49C"
+#define   STATION_SSID     "XXXX"
+#define   STATION_PASSWORD "XXXXXXXX"
 
 #define HOSTNAME "HTTP_BRIDGE"
 String nodeName;
